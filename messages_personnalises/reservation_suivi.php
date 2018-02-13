@@ -19,9 +19,11 @@
 function messages_personnalises_reservation_suivi_dist($contexte) {
 	return array(
 		'nom' => _T('reservation_suivi:reservation_suivi_titre'),
-		'qui' => array(
-			'client' => _T('reservation:notifications_client_label'),
-			'vendeur' => _T('reservation:notifications_vendeur_label')
-		)
+		'declencheurs' => array(
+			'qui' => array(
+				'client' => _T('reservation:notifications_client_label'),
+				'vendeur' => _T('reservation:notifications_vendeur_label')
+			)
+		),
 	);
 }
