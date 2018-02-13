@@ -1,0 +1,55 @@
+<paquet
+	prefix="reservation_suivi"
+	categorie="communication"
+	version="1.0.0"
+	etat="dev"
+	compatibilite="[3.0.0;3.2.*]"
+	logo="prive/themes/spip/images/reservation_suivi-64.png"
+	documentation=""
+	schema="1.0.0" 
+>
+	<!--
+		Paquet généré le 2018-02-13 13:17:20
+		(Vous pouvez bien entendu supprimer ces commentaires) 
+	-->
+
+	<nom>Réservation suivi</nom>
+	<!-- Permet d&#039;être informé quand l&#039;inscription pour un type d&#039;événement est à nouveau disponible -->
+
+	<!-- cette balise peut être présente plusieurs fois s'il y a plusieurs auteurs --> 
+	<auteur>Rainer</auteur>
+
+	<licence>GNU/GPL</licence>
+
+	<!--
+		Exemple de commandes
+		* dependances
+		<necessite nom="saisies" compatibilite="[2.4.0;]" />
+		<utilise nom="saisies" compatibilite="[2.4.0;]" />
+		<lib nom="simplehtmldom" lien="http://chemin_vers_archive.zip" />
+		* pipelines
+		<pipeline nom="autoriser" inclure="reservation_suivi_autorisations.php" />
+		<pipeline nom="insert_head" inclure="reservation_suivi_pipelines.php" />
+		* declarer un pipeline 
+		<pipeline nom="mon_pipeline" action="" />
+		* parents de menus de SPIP :
+				menu_accueil (à éviter), menu_edition, menu_publication,
+				menu_activite, menu_squelette, menu_administration, menu_configuration 
+		<menu nom="reservation_suivi" titre="reservation_suivi:reservation_suivi_titre" parent="menu_edition"  icone="images/reservation_suivi-16.png" />
+		* parents d'onglets... configuration, plugins, statistiques, ... 
+		<onglet nom="reservation_suivi" titre="reservation_suivi:reservation_suivi_titre" parent="configuration" icone="images/reservation_suivi-24.png" />
+	-->
+
+	<necessite nom="saisies" compatibilite="[2.4.0;]" /> 
+
+
+	<pipeline nom="autoriser" inclure="reservation_suivi_autorisations.php" /> 
+
+	<pipeline nom="declarer_tables_objets_sql" inclure="base/reservation_suivi.php" /> 
+	<pipeline nom="declarer_tables_interfaces" inclure="base/reservation_suivi.php" /> 
+	<pipeline nom="affiche_enfants" inclure="reservation_suivi_pipelines.php" /> 
+	<pipeline nom="boite_infos" inclure="reservation_suivi_pipelines.php" /> 
+	<pipeline nom="objet_compte_enfants" inclure="reservation_suivi_pipelines.php" /> 
+
+	<menu nom="rs_evenement_suivi" titre="rs_evenement_suivi:titre_rs_evenement_suivi" parent="menu_edition" icone="images/rs_evenement_suivi-16.png" action="rs_evenement_suivi" /> 
+</paquet>

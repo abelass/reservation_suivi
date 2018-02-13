@@ -1,0 +1,34 @@
+[(#ID_RS_EVENEMENT_SUIVI|oui)
+	[(#AUTORISER{modifier,rs_evenement_suivi,#ID_RS_EVENEMENT_SUIVI}|sinon_interdire_acces)]
+	[(#SET{id_parent,#INFO_ID_ARTICLE{rs_evenement_suivi,#ID_RS_EVENEMENT_SUIVI}})]
+]
+[(#ID_RS_EVENEMENT_SUIVI|non)
+	#SET{id_parent,#ENV{id_rubrique,#ENV{id_parent}}|trouver_rubrique_creer_objet{rs_evenement_suivi}}
+	[(#GET{id_parent}|non|ou{[(#AUTORISER{creerrsevenementsuividans, rubrique, #GET{id_parent}})]}|sinon_interdire_acces)]
+]
+
+#SET{redirect,#ENV{redirect}|sinon{#ID_RS_EVENEMENT_SUIVI|?{#ID_RS_EVENEMENT_SUIVI|generer_url_entite{rs_evenement_suivi},#GET{id_parent}|?{#GET{id_parent}|generer_url_entite{rubrique},#URL_ECRIRE{rubriques}}}}}
+
+
+<div class="cadre-formulaire-editer">
+<div class="entete-formulaire">
+	[(#ID_RS_EVENEMENT_SUIVI|oui)
+	[(#GET{redirect}|icone_verticale{<:icone_retour:>,rs_evenement_suivi,'',left retour[(#ENV{retourajax,''}|oui)ajax preload]})]
+	]
+	[
+		[(#ID_RS_EVENEMENT_SUIVI|?{<:rs_evenement_suivi:icone_modifier_rs_evenement_suivi:>,<:rs_evenement_suivi:icone_creer_rs_evenement_suivi:>})]
+		<h1>(#ENV{titre,#INFO_NOM{rs_evenement_suivi,#ID_RS_EVENEMENT_SUIVI}|sinon{<:info_sans_titre:>}})</h1>
+	]
+</div>
+
+#SET{redirect,#ENV{redirect,#ID_RS_EVENEMENT_SUIVI|generer_url_entite{rs_evenement_suivi}}}
+[(#ENV{retourajax,''}|oui)
+	#SET{redirect,'javascript:if (window.jQuery) jQuery(".entete-formulaire .retour a").followLink();'}
+	<div class="ajax">
+]
+		[(#FORMULAIRE_EDITER_RS_EVENEMENT_SUIVI{#ENV{id_rs_evenement_suivi,oui}, #GET{id_parent}, #GET{redirect}})]
+[(#ENV{retourajax,''}|oui)
+	</div>
+	<script type="text/javascript">/*<!\[CDATA\[*/reloadExecPage('#ENV{exec}');/*\]\]>*/</script>
+]
+</div>

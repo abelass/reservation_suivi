@@ -1,0 +1,16 @@
+<BOUCLE_rs_evenement_suivi(RS_EVENEMENT_SUIVI){id_rs_evenement_suivi=#ENV{id}}>
+<div class="infos">
+[(#SET{texte_objet,<:rs_evenement_suivi:titre_rs_evenement_suivi:>})]
+<div class="numero"><:titre_cadre_numero_objet{objet=#GET{texte_objet}}:><p>#ID_RS_EVENEMENT_SUIVI</p></div>
+
+	<div class='nb_elements'><!--nb_elements--></div>
+
+	[(#AUTORISER{supprimer, rs_evenement_suivi, #ID_RS_EVENEMENT_SUIVI}|oui)
+		[(#BOUTON_ACTION{
+			[(#CHEMIN_IMAGE{rs_evenement_suivi-del-24.png}|balise_img{<:rs_evenement_suivi:supprimer_rs_evenement_suivi:>}|concat{' ',#VAL{<:rs_evenement_suivi:supprimer_rs_evenement_suivi:>}|wrap{<b>}}|trim)],
+			#URL_ACTION_AUTEUR{supprimer_rs_evenement_suivi, #ID_RS_EVENEMENT_SUIVI, #URL_ECRIRE{rs_evenement_suivi}},
+			icone s24 horizontale danger rs_evenement_suivi-del-24, <:rs_evenement_suivi:confirmer_supprimer_rs_evenement_suivi:>})]
+	]
+
+</div>
+</BOUCLE_rs_evenement_suivi>

@@ -1,0 +1,10 @@
+<!-- hierarchie -->
+<a href="#URL_ECRIRE{rs_evenement_suivi}"><:rs_evenement_suivi:titre_rs_evenement_suivi:></a>
+<BOUCLE_hierarchie(RS_EVENEMENT_SUIVI){id_rs_evenement_suivi}>
+&gt; [(#URL_ECRIRE{article,id_article=#ID_ARTICLE}|lien_ou_expose{#INFO_TITRE{articles,#ID_ARTICLE},''})]
+&gt; <strong class="on">#NOM</strong>
+</BOUCLE_hierarchie>
+[(#ENV{id_article}|oui)
+	&gt; [(#URL_ECRIRE{article,id_article=#ID_ARTICLE}|lien_ou_expose{#INFO_TITRE{articles,#ID_ARTICLE},''})]
+]&gt; <strong class="on"><:ecrire:info_sans_titre:></strong>
+<//B_hierarchie>
