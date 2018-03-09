@@ -1,12 +1,12 @@
 <?php
 /**
- * Fonctions utiles au plugin Réservation suivi
+ * Fonctions utiles au plugin Réservation suivi d&#039;événement
  *
- * @plugin     Réservation suivi
+ * @plugin     Réservation suivi d&#039;événement
  * @copyright  2018
- * @author     Rainer
+ * @author     Rainer Müller
  * @licence    GNU/GPL
- * @package    SPIP\Reservation_suivi\Fonctions
+ * @package    SPIP\Reservation_suivi_evenement\Fonctions
  */
 
 if (!defined('_ECRIRE_INC_VERSION')) {

@@ -1,0 +1,56 @@
+[(#AUTORISER{voir,reservation_evenement_suivi,#ID_RESERVATION_EVENEMENT_SUIVI}|sinon_interdire_acces)]
+[(#SET{url_voir,#VAL{reservation_evenement_suivi}|objet_info{url_voir}})]
+[(#SET{url_edit,#VAL{reservation_evenement_suivi}|objet_info{url_edit}})]
+<BOUCLE_reservation_evenement_suivi(RESERVATION_EVENEMENT_SUIVIS){id_reservation_evenement_suivi}{statut==.*}{si #ENV{exec}|=={#GET{url_voir}}}>
+[(#BOITE_OUVRIR{[
+	[(#AUTORISER{modifier,reservation_evenement_suivi,#ID_RESERVATION_EVENEMENT_SUIVI})
+		[(#ID_RESERVATION_EVENEMENT_SUIVI|afficher_qui_edite{reservation_evenement_suivi}|non)
+			[(#URL_ECRIRE{#GET{url_edit},id_reservation_evenement_suivi=#ID_RESERVATION_EVENEMENT_SUIVI}|icone_verticale{<:reservation_evenement_suivi:icone_modifier_reservation_evenement_suivi:>,reservation_evenement_suivi,edit,right ajax preload})]
+		]
+		[(#ID_RESERVATION_EVENEMENT_SUIVI|afficher_qui_edite{reservation_evenement_suivi}|oui)
+			[(#URL_ECRIRE{#GET{url_edit},id_reservation_evenement_suivi=#ID_RESERVATION_EVENEMENT_SUIVI}|icone_verticale{#ID_RESERVATION_EVENEMENT_SUIVI|afficher_qui_edite{reservation_evenement_suivi},warning-24,'',right edition_deja ajax preload})]
+		]
+	]
+
+	<h1>[(#RANG). ](#NOM|sinon{<:info_sans_titre:>})[(#CHEMIN_IMAGE{reservation_evenement_suivi-24.png}|balise_img{reservation_evenement_suivi,cadre-icone})]</h1>
+
+],simple fiche_objet})]
+
+<div class="ajax">
+	#FORMULAIRE_DATER{reservation_evenement_suivi,#ID_RESERVATION_EVENEMENT_SUIVI}
+</div>
+
+<!--affiche_milieu-->
+
+<div id="wysiwyg">
+<INCLURE{fond=prive/objets/contenu/reservation_evenement_suivi,id=#ID_RESERVATION_EVENEMENT_SUIVI,id_reservation_evenement_suivi=#ID_RESERVATION_EVENEMENT_SUIVI,virtuel=oui,ajax=wysiwyg,wysiwyg=1}>
+</div>
+
+<div class="nettoyeur"></div>
+
+[(#AUTORISER{modifier,reservation_evenement_suivi,#ID_RESERVATION_EVENEMENT_SUIVI})
+	[(#ID_RESERVATION_EVENEMENT_SUIVI|afficher_qui_edite{reservation_evenement_suivi}|non)
+		[(#URL_ECRIRE{#GET{url_edit},id_reservation_evenement_suivi=#ID_RESERVATION_EVENEMENT_SUIVI}|icone_verticale{<:reservation_evenement_suivi:icone_modifier_reservation_evenement_suivi:>,reservation_evenement_suivi,edit,right ajax preload})]
+	]
+	[(#ID_RESERVATION_EVENEMENT_SUIVI|afficher_qui_edite{reservation_evenement_suivi}|oui)
+		[(#URL_ECRIRE{#GET{url_edit},id_reservation_evenement_suivi=#ID_RESERVATION_EVENEMENT_SUIVI}|icone_verticale{#ID_RESERVATION_EVENEMENT_SUIVI|afficher_qui_edite{reservation_evenement_suivi},warning-24,'',right edition_deja ajax preload})]
+	]
+]
+
+#PIPELINE{afficher_complement_objet,#ARRAY{args,#ARRAY{type,reservation_evenement_suivi,id,#ID_RESERVATION_EVENEMENT_SUIVI},data,'<div class="nettoyeur"></div>'}}
+
+#BOITE_FERMER
+
+
+#SET{enfants,''}
+[(#VAL{prive/objets/contenu/reservation_evenement_suivi-enfants}|trouver_fond|oui)
+	[(#SET{enfants,[(#INCLURE{fond=prive/objets/contenu/reservation_evenement_suivi-enfants,id_reservation_evenement_suivi,env})]})]
+]
+[(#PIPELINE{affiche_enfants,[(#ARRAY{args,#ARRAY{exec,reservation_evenement_suivi,id_reservation_evenement_suivi,#ID_RESERVATION_EVENEMENT_SUIVI,objet,reservation_evenement_suivi,id_objet,#ID_RESERVATION_EVENEMENT_SUIVI},data,#GET{enfants}})]})]
+
+[(#EVAL{_AJAX}|oui)
+	<script type="text/javascript">/*<!\\[CDATA\\[*/reloadExecPage('#ENV{exec}','#navigation,#chemin,#extra');/*\\]\\]>*/</script>
+]
+</BOUCLE_reservation_evenement_suivi>
+[(#ENV**{exec}|=={#GET{url_edit}}|?{#INCLURE{fond=prive/squelettes/contenu/#GET{url_edit},redirect='',env,retourajax=oui},#REM|sinon_interdire_acces})]
+<//B_reservation_evenement_suivi>

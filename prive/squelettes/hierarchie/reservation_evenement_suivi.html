@@ -1,6 +1,6 @@
 <!-- hierarchie -->
-<a href="#URL_ECRIRE{rs_evenement_suivi}"><:rs_evenement_suivi:titre_rs_evenement_suivi:></a>
-<BOUCLE_hierarchie(RS_EVENEMENT_SUIVI){id_rs_evenement_suivi}>
+<a href="#URL_ECRIRE{reservation_evenement_suivis}"><:reservation_evenement_suivi:titre_reservation_evenement_suivis:></a>
+<BOUCLE_hierarchie(RESERVATION_EVENEMENT_SUIVIS){id_reservation_evenement_suivi}{statut?}>
 &gt; [(#URL_ECRIRE{article,id_article=#ID_ARTICLE}|lien_ou_expose{#INFO_TITRE{articles,#ID_ARTICLE},''})]
 &gt; <strong class="on">#NOM</strong>
 </BOUCLE_hierarchie>

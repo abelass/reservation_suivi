@@ -1,21 +1,21 @@
-<div class='formulaire_spip formulaire_editer formulaire_#FORM formulaire_#FORM-#ENV{id_rs_evenement_suivi,nouveau}'>
+<div class='formulaire_spip formulaire_editer formulaire_#FORM formulaire_#FORM-#ENV{id_reservation_evenement_suivi,nouveau}'>
 	[<p class="reponse_formulaire reponse_formulaire_ok">(#ENV**{message_ok})</p>]
 	[<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
 
 	[(#ENV{editable})
 	<form method="post" action="#ENV{action}"><div>
 		#ACTION_FORMULAIRE{#ENV{action}}
-		<input type="hidden" name="id_rs_evenement_suivi" value="#ENV{id_rs_evenement_suivi}" />
+		<input type="hidden" name="id_reservation_evenement_suivi" value="#ENV{id_reservation_evenement_suivi}" />
 		<div class="editer-groupe">
 
 			[(#SAISIE{input, nom, obligatoire=oui,
-				label=<:rs_evenement_suivi:champ_nom_label:>})]
+				label=<:reservation_evenement_suivi:champ_nom_label:>})]
 
 			[<div class="editer editer_rubrique[ (#ENV**{erreurs/id_parent}|oui)erreur]">
 					<label for="id_parent"><:titre_cadre_interieur_rubrique:></label>[
 					<span class="erreur_message">(#ENV**{erreurs/id_parent})</span>
 					]
-					(#VAL|chercher_rubrique{#ENV{id_rs_evenement_suivi},#ENV{id_parent},'rs_evenement_suivi',#ENV{id_secteur},'',0,form_simple})
+					(#VAL|chercher_rubrique{#ENV{id_reservation_evenement_suivi},#ENV{id_parent},'reservation_evenement_suivi',#ENV{id_secteur},'',0,form_simple})
 			</div>]
 
 
@@ -25,7 +25,7 @@
 
 
 			[(#SAISIE{email, email, obligatoire=oui,
-				label=<:rs_evenement_suivi:champ_email_label:>})]
+				label=<:reservation_evenement_suivi:champ_email_label:>})]
 
 
 

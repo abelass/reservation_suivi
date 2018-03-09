@@ -1,0 +1,20 @@
+<BOUCLE_test_multiple(CONDITION){si #ENV{multiple}|=={on}|oui}>
+	[(#SET{valeur,[(#ENV*{valeur}|is_array|?{[(#ENV*{valeur})],[(#ENV*{valeur}|explode{','})]})]})]
+	<B_reservation_evenement_suivis_selectionnes>
+	<ul>
+	<BOUCLE_reservation_evenement_suivis_selectionnes(RESERVATION_EVENEMENT_SUIVIS){id_reservation_evenement_suivi IN #GET*{valeur}}
+		{par num nom, nom}{statut?}{tout}>
+		<li class="choix">#NOM (#ID_RESERVATION_EVENEMENT_SUIVI)</li>
+	</BOUCLE_reservation_evenement_suivis_selectionnes>
+	</ul>
+	</B_reservation_evenement_suivis_selectionnes>
+   	[(#ENV*{sans_reponse}|propre)]
+	<//B_reservation_evenement_suivis_selectionnes>
+</BOUCLE_test_multiple>
+	<BOUCLE_reservation_evenement_suivi_selectionne(RESERVATION_EVENEMENT_SUIVIS){id_reservation_evenement_suivi=#ENV{valeur}}
+		{par num nom, nom}{statut?}{tout}>
+	  	<p>#NOM (#ID_RESERVATION_EVENEMENT_SUIVI)</p>
+	</BOUCLE_reservation_evenement_suivi_selectionne>
+   	[(#ENV*{sans_reponse}|propre)]
+	<//B_reservation_evenement_suivi_selectionne>
+<//B_test_multiple>

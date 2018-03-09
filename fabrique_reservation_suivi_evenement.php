@@ -2,7 +2,7 @@
 
 /**
  *  Fichier généré par la Fabrique de plugin v6
- *   le 2018-02-13 13:17:20
+ *   le 2018-03-09 10:18:59
  *
  *  Ce fichier de sauvegarde peut servir à recréer
  *  votre plugin avec le plugin «Fabrique» qui a servi à le créer.
@@ -28,8 +28,8 @@ $data = array (
   ),
   'paquet' => 
   array (
-    'prefixe' => 'reservation_suivi',
-    'nom' => 'Réservation suivi',
+    'prefixe' => 'reservation_suivi_evenement',
+    'nom' => 'Réservation suivi d\'événement',
     'slogan' => 'Permet d\'être informé quand l\'inscription pour un type d\'événement est à nouveau disponible',
     'description' => 'Permet à l\'utilisateur de s\'inscrire pour être tenu au courant quand un événement passé est à nouveau ouvert à l\'inscription.',
     'logo' => 
@@ -37,7 +37,7 @@ $data = array (
       0 => '',
     ),
     'version' => '1.0.0',
-    'auteur' => 'Rainer',
+    'auteur' => 'Rainer Müller',
     'auteur_lien' => '',
     'licence' => 'GNU/GPL',
     'categorie' => 'communication',
@@ -82,8 +82,8 @@ $data = array (
   array (
     0 => 
     array (
-      'nom' => 'Événement suivis',
-      'nom_singulier' => 'Événement suivi',
+      'nom' => 'Suivis d\'événement',
+      'nom_singulier' => 'Suivi d\'événement',
       'genre' => 'masculin',
       'logo' => 
       array (
@@ -93,11 +93,11 @@ $data = array (
         16 => '',
         12 => '',
       ),
-      'logo_variantes' => '',
-      'table' => 'rs_evenement_suivi',
-      'cle_primaire' => 'id_rs_evenement_suivi',
+      'logo_variantes' => 'on',
+      'table' => 'reservation_evenement_suivis',
+      'cle_primaire' => 'id_reservation_evenement_suivi',
       'cle_primaire_sql' => 'bigint(21) NOT NULL',
-      'table_type' => 'rs_evenement_suivi',
+      'table_type' => 'reservation_evenement_suivi',
       'champs' => 
       array (
         0 => 
@@ -177,35 +177,31 @@ $data = array (
         ),
       ),
       'champ_titre' => 'nom',
-      'langues' => 
-      array (
-        0 => 'lang',
-      ),
       'champ_date' => 'date',
-      'statut' => '',
+      'statut' => 'on',
       'chaines' => 
       array (
-        'titre_objets' => 'événement suivis',
-        'titre_objet' => 'événement suivi',
-        'info_aucun_objet' => 'Aucun événement suivi',
-        'info_1_objet' => 'Un événement suivi',
-        'info_nb_objets' => '@nb@ événement suivis',
-        'icone_creer_objet' => 'Créer un événement suivi',
-        'icone_modifier_objet' => 'Modifier ce événement suivi',
-        'titre_logo_objet' => 'Logo de ce événement suivi',
-        'titre_langue_objet' => 'Langue de ce événement suivi',
-        'texte_definir_comme_traduction_objet' => 'Ce événement suivi est une traduction du événement suivi numéro :',
-        'titre_\\objets_lies_objet' => 'Liés à ce événement suivi',
-        'titre_objets_rubrique' => 'événement suivis de la rubrique',
-        'info_objets_auteur' => 'Les événement suivis de cet auteur',
-        'retirer_lien_objet' => 'Retirer ce événement suivi',
-        'retirer_tous_liens_objets' => 'Retirer tous les événement suivis',
-        'ajouter_lien_objet' => 'Ajouter ce événement suivi',
-        'texte_ajouter_objet' => 'Ajouter un événement suivi',
-        'texte_creer_associer_objet' => 'Créer et associer un événement suivi',
-        'texte_changer_statut_objet' => 'Ce événement suivi est :',
-        'supprimer_objet' => 'Supprimer cet événement suivi',
-        'confirmer_supprimer_objet' => 'Confirmez-vous la suppression de cet événement suivi ?',
+        'titre_objets' => 'Réservation événement suivis',
+        'titre_objet' => 'Réservation événement suivi',
+        'info_aucun_objet' => 'Aucun réservation événement suivi',
+        'info_1_objet' => 'Un réservation événement suivi',
+        'info_nb_objets' => '@nb@ réservation événement suivis',
+        'icone_creer_objet' => 'Créer un réservation événement suivi',
+        'icone_modifier_objet' => 'Modifier ce réservation événement suivi',
+        'titre_logo_objet' => 'Logo de ce réservation événement suivi',
+        'titre_langue_objet' => 'Langue de ce réservation événement suivi',
+        'texte_definir_comme_traduction_objet' => 'Ce réservation événement suivi est une traduction du réservation événement suivi numéro :',
+        'titre_\\objets_lies_objet' => 'Liés à ce réservation événement suivi',
+        'titre_objets_rubrique' => 'Réservation événement suivis de la rubrique',
+        'info_objets_auteur' => 'Les réservation événement suivis de cet auteur',
+        'retirer_lien_objet' => 'Retirer ce réservation événement suivi',
+        'retirer_tous_liens_objets' => 'Retirer tous les réservation événement suivis',
+        'ajouter_lien_objet' => 'Ajouter ce réservation événement suivi',
+        'texte_ajouter_objet' => 'Ajouter un réservation événement suivi',
+        'texte_creer_associer_objet' => 'Créer et associer un réservation événement suivi',
+        'texte_changer_statut_objet' => 'Ce réservation événement suivi est :',
+        'supprimer_objet' => 'Supprimer cet réservation événement suivi',
+        'confirmer_supprimer_objet' => 'Confirmez-vous la suppression de cet réservation événement suivi ?',
       ),
       'rubriques' => 
       array (
@@ -217,7 +213,7 @@ $data = array (
       'afficher_liens' => '',
       'roles' => '',
       'auteurs_liens' => '',
-      'vue_auteurs_liens' => '',
+      'vue_auteurs_liens' => 'on',
       'fichiers' => 
       array (
         'echafaudages' => 

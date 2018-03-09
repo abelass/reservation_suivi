@@ -1,12 +1,12 @@
 <?php
 /**
- * Définit les autorisations du plugin Réservation suivi
+ * Définit les autorisations du plugin Réservation suivi d&#039;événement
  *
- * @plugin     Réservation suivi
+ * @plugin     Réservation suivi d&#039;événement
  * @copyright  2018
- * @author     Rainer
+ * @author     Rainer Müller
  * @licence    GNU/GPL
- * @package    SPIP\Reservation_suivi\Autorisations
+ * @package    SPIP\Reservation_suivi_evenement\Autorisations
  */
 
 if (!defined('_ECRIRE_INC_VERSION')) {
@@ -22,14 +22,14 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 /**
  * Fonction d'appel pour le pipeline
  * @pipeline autoriser */
-function reservation_suivi_autoriser() {
+function reservation_suivi_evenement_autoriser() {
 }
 
 
 /* Exemple
-function autoriser_reservation_suivi_configurer_dist($faire, $type, $id, $qui, $opt) {
+function autoriser_reservation_suivi_evenement_configurer_dist($faire, $type, $id, $qui, $opt) {
 	// type est un objet (la plupart du temps) ou une chose.
-	// autoriser('configurer', '_reservation_suivi') => $type = 'reservation_suivi'
+	// autoriser('configurer', '_reservation_suivi_evenement') => $type = 'reservation_suivi_evenement'
 	// au choix :
 	return autoriser('webmestre', $type, $id, $qui, $opt); // seulement les webmestres
 	return autoriser('configurer', '', $id, $qui, $opt); // seulement les administrateurs complets
@@ -39,11 +39,11 @@ function autoriser_reservation_suivi_configurer_dist($faire, $type, $id, $qui, $
 */
 
 // -----------------
-// Objet rs_evenement_suivi
+// Objet reservation_evenement_suivis
 
 
 /**
- * Autorisation de voir un élément de menu (rsevenementsuivi)
+ * Autorisation de voir un élément de menu (reservationevenementsuivis)
  *
  * @param  string $faire Action demandée
  * @param  string $type  Type d'objet sur lequel appliquer l'action
@@ -52,13 +52,13 @@ function autoriser_reservation_suivi_configurer_dist($faire, $type, $id, $qui, $
  * @param  array  $opt   Options de cette autorisation
  * @return bool          true s'il a le droit, false sinon
 **/
-function autoriser_rsevenementsuivi_menu_dist($faire, $type, $id, $qui, $opt) {
+function autoriser_reservationevenementsuivis_menu_dist($faire, $type, $id, $qui, $opt) {
 	return true;
 }
 
 
 /**
- * Autorisation de créer (rsevenementsuivi)
+ * Autorisation de créer (reservationevenementsuivi)
  *
  * @param  string $faire Action demandée
  * @param  string $type  Type d'objet sur lequel appliquer l'action
@@ -67,12 +67,12 @@ function autoriser_rsevenementsuivi_menu_dist($faire, $type, $id, $qui, $opt) {
  * @param  array  $opt   Options de cette autorisation
  * @return bool          true s'il a le droit, false sinon
 **/
-function autoriser_rsevenementsuivi_creer_dist($faire, $type, $id, $qui, $opt) {
+function autoriser_reservationevenementsuivi_creer_dist($faire, $type, $id, $qui, $opt) {
 	return (in_array($qui['statut'], array('0minirezo', '1comite')) and sql_countsel('spip_rubriques')>0);
 }
 
 /**
- * Autorisation de voir (rsevenementsuivi)
+ * Autorisation de voir (reservationevenementsuivi)
  *
  * @param  string $faire Action demandée
  * @param  string $type  Type d'objet sur lequel appliquer l'action
@@ -81,12 +81,12 @@ function autoriser_rsevenementsuivi_creer_dist($faire, $type, $id, $qui, $opt) {
  * @param  array  $opt   Options de cette autorisation
  * @return bool          true s'il a le droit, false sinon
 **/
-function autoriser_rsevenementsuivi_voir_dist($faire, $type, $id, $qui, $opt) {
+function autoriser_reservationevenementsuivi_voir_dist($faire, $type, $id, $qui, $opt) {
 	return true;
 }
 
 /**
- * Autorisation de modifier (rsevenementsuivi)
+ * Autorisation de modifier (reservationevenementsuivi)
  *
  * @param  string $faire Action demandée
  * @param  string $type  Type d'objet sur lequel appliquer l'action
@@ -95,12 +95,12 @@ function autoriser_rsevenementsuivi_voir_dist($faire, $type, $id, $qui, $opt) {
  * @param  array  $opt   Options de cette autorisation
  * @return bool          true s'il a le droit, false sinon
 **/
-function autoriser_rsevenementsuivi_modifier_dist($faire, $type, $id, $qui, $opt) {
+function autoriser_reservationevenementsuivi_modifier_dist($faire, $type, $id, $qui, $opt) {
 	return in_array($qui['statut'], array('0minirezo', '1comite'));
 }
 
 /**
- * Autorisation de supprimer (rsevenementsuivi)
+ * Autorisation de supprimer (reservationevenementsuivi)
  *
  * @param  string $faire Action demandée
  * @param  string $type  Type d'objet sur lequel appliquer l'action
@@ -109,12 +109,12 @@ function autoriser_rsevenementsuivi_modifier_dist($faire, $type, $id, $qui, $opt
  * @param  array  $opt   Options de cette autorisation
  * @return bool          true s'il a le droit, false sinon
 **/
-function autoriser_rsevenementsuivi_supprimer_dist($faire, $type, $id, $qui, $opt) {
+function autoriser_reservationevenementsuivi_supprimer_dist($faire, $type, $id, $qui, $opt) {
 	return $qui['statut'] == '0minirezo' and !$qui['restreint'];
 }
 
 /**
- * Autorisation de créer l'élément (rsevenementsuivi) dans une rubrique
+ * Autorisation de créer l'élément (reservationevenementsuivi) dans une rubrique
  *
  * @param  string $faire Action demandée
  * @param  string $type  Type d'objet sur lequel appliquer l'action
@@ -123,12 +123,12 @@ function autoriser_rsevenementsuivi_supprimer_dist($faire, $type, $id, $qui, $op
  * @param  array  $opt   Options de cette autorisation
  * @return bool          true s'il a le droit, false sinon
 **/
-function autoriser_rubrique_creerrsevenementsuividans_dist($faire, $type, $id, $qui, $opt) {
-	return ($id and autoriser('voir', 'rubrique', $id) and autoriser('creer', 'rs_evenement_suivi', $id));
+function autoriser_rubrique_creerreservationevenementsuividans_dist($faire, $type, $id, $qui, $opt) {
+	return ($id and autoriser('voir', 'rubrique', $id) and autoriser('creer', 'reservation_evenement_suivi', $id));
 }
 
 /**
- * Autorisation de créer l'élément (rsevenementsuivi) dans un articles
+ * Autorisation de créer l'élément (reservationevenementsuivi) dans un articles
  *
  * @param  string $faire Action demandée
  * @param  string $type  Type d'objet sur lequel appliquer l'action
@@ -137,6 +137,6 @@ function autoriser_rubrique_creerrsevenementsuividans_dist($faire, $type, $id, $
  * @param  array  $opt   Options de cette autorisation
  * @return bool          true s'il a le droit, false sinon
 **/
-function autoriser_article_creerrsevenementsuividans_dist($faire, $type, $id, $qui, $opt) {
-	return ($id and autoriser('voir', 'articles', $id) and autoriser('creer', 'rs_evenement_suivi'));
+function autoriser_article_creerreservationevenementsuividans_dist($faire, $type, $id, $qui, $opt) {
+	return ($id and autoriser('voir', 'articles', $id) and autoriser('creer', 'reservation_evenement_suivi'));
 }

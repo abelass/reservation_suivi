@@ -8,7 +8,7 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// R
-	'reservation_suivi_titre' => 'Réservation suivi',
+	'reservation_suivi_evenement_titre' => 'Réservation suivi d\'événement',
 
 	// C
 	'cfg_exemple' => 'Exemple',
@@ -16,5 +16,5 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'cfg_titre_parametrages' => 'Paramétrages',
 
 	// T
-	'titre_page_configurer_reservation_suivi' => 'Paramètres Reśervation suivi',
+	'titre_page_configurer_reservation_suivi_evenement' => 'Paramètres Reśervation suivi',
 );

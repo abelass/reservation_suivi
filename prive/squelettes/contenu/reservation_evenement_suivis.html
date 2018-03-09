@@ -1,0 +1,8 @@
+#FORMULAIRE_RECHERCHE_ECRIRE{#SELF,ajax}
+<div class="nettoyeur"></div>
+
+<INCLURE{fond=prive/objets/liste/reservation_evenement_suivis, env, ajax, sinon=<:reservation_evenement_suivi:info_aucun_reservation_evenement_suivi:>}>
+
+[(#AUTORISER{creer,reservation_evenement_suivi})
+	[(#URL_ECRIRE{reservation_evenement_suivi_edit,new=oui}|icone_verticale{<:reservation_evenement_suivi:icone_creer_reservation_evenement_suivi:>,reservation_evenement_suivi,new,right})]
+]
